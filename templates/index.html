@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ settings.site_name }}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ settings.site_name }}</h1>
+        <img src="{{ settings.site_logo.url }}" width="{{ settings.logo_width }}" height="{{ settings.logo_height }}" alt="Logo">
+        <p>{{ settings.address }}</p>
+        <p>{{ settings.phone }}</p>
+        <p>{{ settings.email }}</p>
+    </header>
+
+    <nav>
+        <ul>
+            {% for category in categories %}
+                <li><a href="#">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <section>
+        <h2>El İşleri Paylaşımları</h2>
+        <div>
+            {% for handcraft in handcrafts %}
+                <article>
+                    <h3>{{ handcraft.title }}</h3>
+                    {% for handcraft_image in handcraft_images %}
+                        {% if handcraft_image.handcraft == handcraft %}
+                            <img src="{{ handcraft_image.image.url }}" alt="{{ handcraft.title }}">
+                        {% endif %}
+                    {% endfor %}
+                    <p>{{ handcraft.description }}</p>
+                    <small>Paylaşım Tarihi: {{ handcraft.created_at }}</small>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section>
+        <h2>Çalışanlar</h2>
+        <div>
+            {% for staff in staff_members %}
+                <div>
+                    <img src="{{ staff.image.url }}" alt="{{ staff.name }}">
+                    <h3>{{ staff.name }}</h3>
+                    <p>{{ staff.title }}</p>
+                    <p>{{ staff.bio }}</p>
+                    <div>
+                        {% for platform, url in social_media.items %}
+                            <a href="{{ url }}" target="_blank">{{ platform }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
