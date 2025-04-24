@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }}'s Profile{% endblock %}
+
+{% block content %}
+  <h1>{{ user.username }}'s Profile</h1>
+
+  <!-- Logout Linki -->
+  <form action="{% url 'logout' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Logout</button>
+  </form>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  
+  <a href="{% url 'index' %}">Back to Home</a>
+{% endblock %}

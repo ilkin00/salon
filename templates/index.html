@@ -1,62 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ settings.site_name }}</title>
-</head>
-<body>
-    <header>
-        <h1>{{ settings.site_name }}</h1>
-        <img src="{{ settings.site_logo.url }}" width="{{ settings.logo_width }}" height="{{ settings.logo_height }}" alt="Logo">
-        <p>{{ settings.address }}</p>
-        <p>{{ settings.phone }}</p>
-        <p>{{ settings.email }}</p>
-    </header>
+{% extends 'base.html' %}
 
-    <nav>
-        <ul>
-            {% for category in categories %}
-                <li><a href="#">{{ category.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+{% block title %}Ana Sayfa - {{ settings.site_name }}{% endblock %}
 
-    <section>
+{% block content %}
+    <!-- El İşleri Paylaşımları Bölümü -->
+    <section class="container mt-5">
         <h2>El İşleri Paylaşımları</h2>
-        <div>
+        <div class="row">
             {% for handcraft in handcrafts %}
-                <article>
-                    <h3>{{ handcraft.title }}</h3>
-                    {% for handcraft_image in handcraft_images %}
-                        {% if handcraft_image.handcraft == handcraft %}
-                            <img src="{{ handcraft_image.image.url }}" alt="{{ handcraft.title }}">
-                        {% endif %}
-                    {% endfor %}
-                    <p>{{ handcraft.description }}</p>
-                    <small>Paylaşım Tarihi: {{ handcraft.created_at }}</small>
-                </article>
-            {% endfor %}
-        </div>
-    </section>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-lg" style="width: 18rem;">
 
-    <section>
-        <h2>Çalışanlar</h2>
-        <div>
-            {% for staff in staff_members %}
-                <div>
-                    <img src="{{ staff.image.url }}" alt="{{ staff.name }}">
-                    <h3>{{ staff.name }}</h3>
-                    <p>{{ staff.title }}</p>
-                    <p>{{ staff.bio }}</p>
-                    <div>
-                        {% for platform, url in social_media.items %}
-                            <a href="{{ url }}" target="_blank">{{ platform }}</a>
-                        {% endfor %}
+                        {% with handcraft.handcraftimage_set.first as first_image %}
+                            {% if first_image %}
+                                <img src="{{ first_image.image.url }}" class="card-img-top" alt="{{ handcraft.title }}">
+                            {% else %}
+                                <img src="https://via.placeholder.com/300x200?text=Resim+Yok" class="card-img-top" alt="Resim yok">
+                            {% endif %}
+                        {% endwith %}
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ handcraft.title }}</h5>
+                            <p class="card-text">{{ handcraft.description }}</p>
+
+                            {% with handcraft.handcraftvideo_set.first as first_video %}
+                                {% if first_video %}
+                                    <div class="ratio ratio-16x9 mb-2">
+                                        <iframe src="{{ first_video.video_url }}" allowfullscreen></iframe>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+
+                            <a href="#" class="btn btn-primary">İncele</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </section>
-</body>
-</html>
+
+    <!-- Çalışanlar Bölümü -->
+    <section class="container mt-5">
+        <h2>Çalışanlar</h2>
+        <div class="row">
+            {% for staff in staff_members %}
+                <div class="col-md-4">
+                    <div class="card mb-4" style="width: 18rem;">
+                        <img src="{{ staff.image.url }}" class="card-img-top" alt="{{ staff.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ staff.name }}</h5>
+                            <p class="card-text">{{ staff.title }}</p>
+                            <p class="card-text">{{ staff.bio }}</p>
+                            <div class="social-media">
+                                {% for platform, url in social_media.items %}
+                                    <a href="{{ url }}" target="_blank" class="text-decoration-none">
+                                        <i class="fab fa-{{ platform|lower }} fa-2x"></i>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

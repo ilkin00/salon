@@ -1,0 +1,10 @@
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; {{ settings.site_name }} - {{ settings.phone }} - {{ settings.email }}</p>
+    <div class="social-media">
+        {% for platform, url in social_media.items %}
+            <a href="{{ url }}" target="_blank" class="text-decoration-none mx-2">
+                <i class="fab fa-{{ platform|lower }} fa-2x"></i>
+            </a>
+        {% endfor %}
+    </div>
+</footer>
