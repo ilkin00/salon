@@ -1,10 +1,6 @@
 from django.contrib import admin
 from .models import User, Settings, SocialLink, Appointment, Category, Staff, Handcraft, HandcraftImage, HandcraftVideo, Page
 
-# USER Model
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'signup_type', 'created_at')
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
@@ -47,7 +43,7 @@ class HandcraftImageAdmin(admin.ModelAdmin):
 # HANDCRAFT VIDEO Model
 @admin.register(HandcraftVideo)
 class HandcraftVideoAdmin(admin.ModelAdmin):
-    list_display = ('handcraft', 'video_url')
+    list_display = ('handcraft', 'video_url', 'video_file')
 
 # PAGE Model
 @admin.register(Page)
