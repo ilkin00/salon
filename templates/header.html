@@ -17,6 +17,13 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        {% if settings.whatsapp_link %}
+        <div class="container text-center mt-4">
+            <a href="{{ settings.whatsapp_link }}" class="btn btn-success btn-lg" target="_blank" style="color: #fff;">
+                <i class="fab fa-whatsapp"></i> Randevu Al
+            </a>
+        </div>
+        {% endif %}
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% for category in categories %}

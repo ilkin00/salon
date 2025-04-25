@@ -10,6 +10,7 @@ class Settings(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     address = models.TextField()
+    whatsapp_link = models.URLField(null=True, blank=True)  # ✅ YENİ EKLENDİ
 
     logo_width = models.IntegerField(null=True, blank=True)
     logo_height = models.IntegerField(null=True, blank=True)

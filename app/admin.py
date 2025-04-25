@@ -4,7 +4,7 @@ from .models import User, Settings, SocialLink, Appointment, Category, Staff, Ha
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ('site_name', 'site_logo', 'logo_size', 'site_favicon')
+    list_display = ('site_name', 'site_logo', 'logo_size', 'site_favicon', 'whatsapp_link')  # ✅ 
 
     def logo_size(self, obj):
         if obj.logo_width and obj.logo_height:
