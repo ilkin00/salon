@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block title %}{{ user.username }}'s Profile{% endblock %}
@@ -11,6 +12,17 @@
     <button type="submit" class="btn btn-danger">Logout</button>
   </form>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }}'s Profile</title>
+</head>
+<body>
+  <h1>{{ user.username }}'s Profile</h1>
+
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
@@ -18,4 +30,9 @@
   </form>
   
   <a href="{% url 'index' %}">Back to Home</a>
+<<<<<<< HEAD
 {% endblock %}
+=======
+</body>
+</html>
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Kök Renk Değişkenleri */
 :root {
     --primary-color: #8e44ad; /* Mor */
@@ -147,4 +148,41 @@ a {
 a:hover {
     color: var(--link-hover-color);
     text-decoration: underline;
+=======
+/* Genel stil */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Hover animasyonu */
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* El işleri paylaşımı için özel stil */
+.handcrafts img {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
+.handcrafts img:hover {
+    opacity: 0.8;
+}
+
+/* Footer stil */
+footer {
+    background-color: #222;
+}
+
+/* Animasyon */
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4
 }

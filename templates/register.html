@@ -1,8 +1,19 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block title %}Register{% endblock %}
 
 {% block content %}
+=======
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4
     <h2>Register</h2>
     <form method="POST">
         {% csrf_token %}
@@ -10,4 +21,9 @@
         <button type="submit">Register</button>
     </form>
     <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+<<<<<<< HEAD
 {% endblock %}
+=======
+</body>
+</html>
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4

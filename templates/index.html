@@ -1,15 +1,72 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block title %}Ana Sayfa - {{ settings.site_name }}{% endblock %}
 
 {% block content %}
     <!-- El İşleri Paylaşımları Bölümü -->
+=======
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+    <!-- Favicon ekliyoruz -->
+    {% if settings.site_favicon %}
+        <link rel="icon" href="{{ settings.site_favicon.url }}" type="image/x-icon">
+    {% else %}
+        <link rel="icon" href="/static/default_favicon.ico" type="image/x-icon">
+    {% endif %}
+    <title>{{ settings.site_name }}</title>
+    
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJb3H7KqO38r+K6z4HAw7cT5iTz1XwKhZ43mBl28lT1eAaKxr9XxGgxRacJ0" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header class="text-center py-4">
+        <h1>{{ settings.site_name }}</h1>
+        <img src="{{ settings.site_logo.url }}" width="100" height="100" alt="Logo">
+        <p>{{ settings.address }}</p>
+        <p>{{ settings.phone }}</p>
+        <p>{{ settings.email }}</p>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">{{ settings.site_name }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% for category in categories %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ category.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4
     <section class="container mt-5">
         <h2>El İşleri Paylaşımları</h2>
         <div class="row">
             {% for handcraft in handcrafts %}
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg" style="width: 18rem;">
+<<<<<<< HEAD
 
                         {% with handcraft.handcraftimage_set.first as first_image %}
                             {% if first_image %}
@@ -31,6 +88,12 @@
                                 {% endif %}
                             {% endwith %}
 
+=======
+                        <img src="{{ handcraft_image.image.url }}" class="card-img-top" alt="{{ handcraft.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ handcraft.title }}</h5>
+                            <p class="card-text">{{ handcraft.description }}</p>
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4
                             <a href="#" class="btn btn-primary">İncele</a>
                         </div>
                     </div>
@@ -39,7 +102,11 @@
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Çalışanlar Bölümü -->
+=======
+    <!-- Staff Section -->
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4
     <section class="container mt-5">
         <h2>Çalışanlar</h2>
         <div class="row">
@@ -64,4 +131,24 @@
             {% endfor %}
         </div>
     </section>
+<<<<<<< HEAD
 {% endblock %}
+=======
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; {{ settings.site_name }} - {{ settings.phone }} - {{ settings.email }}</p>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+
+
+
+</body>
+</html>
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4

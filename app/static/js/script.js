@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Sayfa yüklendiğinde yapılacak işlemler
 document.addEventListener('DOMContentLoaded', function() {
     // Navbar mobil menüsü için açma/kapama işlevi
@@ -86,3 +87,18 @@ mediaQuery.addListener(function(e) {
         navbarNav.classList.remove('show');
     }
 });
+=======
+$(document).ready(function() {
+    // Sayfa yüklendikçe fade-in animasyonu ekleyelim
+    $('body').addClass('fade-in');
+    
+    // Navbar'da scroll efektini aktif hale getirelim
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+            $('.navbar').addClass('bg-dark');
+        } else {
+            $('.navbar').removeClass('bg-dark');
+        }
+    });
+});
+>>>>>>> c6660c705694c7fb36038816303411bc386e7da4
